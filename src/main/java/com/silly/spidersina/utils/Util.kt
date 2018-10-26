@@ -83,9 +83,8 @@ fun log(message: Any?) {
 /**
  * yyyy-MM-dd HH:mm:ss 转时间戳
  */
-fun time2timeCurrent(time: String): String {
+fun time2timeCurrent(time: String): Long {
     val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     val date = simpleDateFormat.parse(time)
-    val ts = date.time
-    return ts.toString()
+    return date.time
 }

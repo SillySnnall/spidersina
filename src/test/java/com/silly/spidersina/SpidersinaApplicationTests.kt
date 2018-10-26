@@ -81,21 +81,10 @@ class SpidersinaApplicationTests {
                 val contents = newsDetailAnalysis(item.URL)
                 newsDao.save(News(item.news_id, item.title,
                         item.allPics.pics[0].imgurl,
-                        item.cdateTime, item.source, item.summary))
+                        item.cdateTime.toLong(), item.source, item.summary))
                 newsDetailDao.save(NewsDetail(item.news_id, contents))
             }
             log("第 $i 页完成")
         }
-    }
-
-
-    @Test
-    fun time2time() {
-        val findAll = newsDao.findAll()
-        for ((index, item) in findAll.withIndex()) {
-            item.cdateTime = time2timeCurrent(item.cdateTime)
-            log(index)
-        }
-        newsDao.saveAll(findAll)
     }
 }
